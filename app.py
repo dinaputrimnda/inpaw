@@ -219,21 +219,6 @@ with tab_prediksi:
                 status_desc = "Sistem cerdas kami memprediksi bahwa kombinasi pelayanan maskapai yang diterima masuk dalam kategori <b>Netral atau Tidak Puas</b>."
 
             st.markdown(f"""
-           # ... (bagian logika prediksi sebelumnya) ...
-
-            # Bagian Kiri: Kotak Putih berisi Teks Hasil & Historis
-            with res_col1:
-                if prediction_label == "satisfied":
-                    status_color = "#4CAF50"
-                    status_text = "PUAS (Satisfied)"
-                    status_desc = "Sistem cerdas kami memprediksi bahwa kombinasi layanan yang diterima oleh penumpang ini menghasilkan status <b>Sangat Puas</b>."
-                else:
-                    status_color = "#E53935"
-                    status_text = "NETRAL / TIDAK PUAS"
-                    status_desc = "Sistem cerdas kami memprediksi bahwa kombinasi pelayanan maskapai yang diterima masuk dalam kategori <b>Netral atau Tidak Puas</b>."
-
-                # Memperbesar font di sini (font-size diatur ke 42px untuk judul, 18px untuk deskripsi)
-                st.markdown(f"""
             <div style="background-color: #FFFFFF; padding: 25px; border-radius: 12px; border: 1px solid #E0E0E0; box-shadow: 2px 4px 10px rgba(0,0,0,0.05); height: 100%;">
                 <p style="color: gray; font-size: 14px; margin-bottom: 5px; font-weight: bold;">HASIL PREDIKSI SAAT INI</p>
                 <h1 style="color: {status_color}; margin: 0; font-size: 36px;">{status_text}</h1>

@@ -271,49 +271,62 @@ with tab_prediksi:
 # ==========================================
 # TAB 2: TOOL GRAFIK EDA
 # ==========================================
+# ==========================================
+# TAB 2: TOOL GRAFIK EDA (VERSI TAMPILAN LANGSUNG)
+# ==========================================
 with tab_eda:
-    st.subheader("📊 Dashboard Analisis Grafik Interaktif")
-    
-    pilihan_grafik = st.selectbox("Pilih Sudut Pandang Data yang Ingin Divisualisasikan:", [
-        "1. Distribusi Target Utama (Kepuasan Keseluruhan)",
-        "2. Profil Demografi & Penerbangan (Kategorikal)",
-        "3. Penilaian Kualitas Layanan Fasilitas (Rating 0-5)",
-        "4. Distribusi Angka Keterlambatan & Jarak (Numerik)"
-    ])
-    
-    st.markdown("---")
-    
-    cat_features = ['Gender', 'Customer Type', 'Type of Travel', 'Class']
-    rating_features = ['Inflight wifi service', 'Departure/Arrival time convenient', 
-                       'Ease of Online booking', 'Gate location', 'Food and drink', 
-                       'Online boarding', 'Seat comfort', 'Inflight entertainment', 
-                       'On-board service', 'Leg room service', 'Baggage handling', 
-                       'Checkin service', 'Inflight service', 'Cleanliness']
-    num_features = ['Age', 'Flight Distance', 'Departure Delay in Minutes', 'Arrival Delay in Minutes']
+    st.subheader("📊 Dashboard Analisis Visualisasi Data")
+    st.markdown("Berikut adalah ringkasan visualisasi hubungan antar variabel terhadap tingkat kepuasan penumpang:")
 
-    if pilihan_grafik.startswith("1"):
-        fig, ax = plt.subplots(figsize=(6, 4))
-        sns.countplot(x='satisfaction', data=df_raw, palette='Set2', ax=ax, edgecolor='black')
-        plt.title("Perbandingan Jumlah Total Penumpang Puas vs Netral", fontweight='bold')
-        st.pyplot(fig)
-        
-    elif pilihan_grafik.startswith("2"):
-        fitur_pilihan = st.selectbox("Filter Berdasarkan Fitur:", cat_features)
-        fig, ax = plt.subplots(figsize=(8, 4))
-        sns.countplot(x=fitur_pilihan, hue='satisfaction', data=df_raw, palette='viridis', ax=ax, edgecolor='black')
-        plt.title(f"Pengaruh {fitur_pilihan} Terhadap Kepuasan", fontweight='bold')
-        st.pyplot(fig)
-        
-    elif pilihan_grafik.startswith("3"):
-        fitur_pilihan_rating = st.selectbox("Pilih Fasilitas yang Ingin Dianalisis:", rating_features)
-        fig, ax = plt.subplots(figsize=(9, 4))
-        sns.countplot(x=fitur_pilihan_rating, hue='satisfaction', data=df_raw, palette='muted', ax=ax, edgecolor='black')
-        plt.title(f"Analisis Kepuasan Berdasarkan Skor: {fitur_pilihan_rating}", fontweight='bold')
-        st.pyplot(fig)
-        
-    elif pilihan_grafik.startswith("4"):
-        fitur_pilihan_num = st.selectbox("Pilih Metrik Variabel Kontinu:", num_features)
-        fig, ax = plt.subplots(figsize=(9, 4))
-        sns.boxplot(x='satisfaction', y=fitur_pilihan_num, data=df_raw, palette='pastel', ax=ax)
-        plt.title(f"Penyebaran Data {fitur_pilihan_num} terhadap Kepuasan", fontweight='bold')
-        st.pyplot(fig)
+    # 1. Distribusi Target Utama
+    st.markdown("---")
+    st.markdown("#### 1. Distribusi Status Kepuasan")
+    fig1, ax1 = plt.subplots(figsize=(5, 3)) # Ukuran lebih kecil agar pas di kolom
+    sns.countplot(x='satisfaction', data=df_raw, palette='Set2', ax=ax1, edgecolor='black')
+    st.pyplot(fig1)
+
+    # 2. Fitur Kategorikal (Gunakan 2 kolom agar rapi)
+    st.markdown("---")
+    st.markdown("#### 2. Analisis Demografi & Penerbangan")
+    c1, c2 = st.columns(2)
+    
+    with c1:
+        fig2, ax2 = plt.subplots(figsize=(5, 3))
+        sns.countplot(x='Class', hue='satisfaction', data=df_raw, palette='viridis', ax=ax2, edgecolor='black')
+        st.pyplot(fig2)
+    with c2:
+        fig3, ax3 = plt.subplots(figsize=(5, 3))
+        sns.countplot(x='Type of Travel', hue='satisfaction', data=df_raw, palette='viridis', ax=ax3, edgecolor='black')
+        st.pyplot(fig3)
+
+    # 3. Fitur Rating Layanan (Tampilkan 3 grafik teratas sebagai contoh agar tidak terlalu panjang)
+    st.markdown("---")
+    st.markdown("#### 3. Analisis Fasilitas Utama (Rating)")
+    r1, r2, r3 = st.columns(3)
+    
+    with r1:
+        fig4, ax4 = plt.subplots(figsize=(4, 3))
+        sns.countplot(x='Inflight wifi service', hue='satisfaction', data=df_raw, palette='muted', ax=ax4, edgecolor='black')
+        st.pyplot(fig4)
+    with r2:
+        fig5, ax5 = plt.subplots(figsize=(4, 3))
+        sns.countplot(x='Seat comfort', hue='satisfaction', data=df_raw, palette='muted', ax=ax5, edgecolor='black')
+        st.pyplot(fig5)
+    with r3:
+        fig6, ax6 = plt.subplots(figsize=(4, 3))
+        sns.countplot(x='Food and drink', hue='satisfaction', data=df_raw, palette='muted', ax=ax6, edgecolor='black')
+        st.pyplot(fig6)
+
+    # 4. Fitur Numerik (Boxplot)
+    st.markdown("---")
+    st.markdown("#### 4. Distribusi Variabel Numerik")
+    n1, n2 = st.columns(2)
+    
+    with n1:
+        fig7, ax7 = plt.subplots(figsize=(5, 3))
+        sns.boxplot(x='satisfaction', y='Age', data=df_raw, palette='pastel', ax=ax7)
+        st.pyplot(fig7)
+    with n2:
+        fig8, ax8 = plt.subplots(figsize=(5, 3))
+        sns.boxplot(x='satisfaction', y='Flight Distance', data=df_raw, palette='pastel', ax=ax8)
+        st.pyplot(fig8)

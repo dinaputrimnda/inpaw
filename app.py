@@ -234,17 +234,17 @@ with tab_prediksi:
 
                 # Memperbesar font di sini (font-size diatur ke 42px untuk judul, 18px untuk deskripsi)
                 st.markdown(f"""
-                <div style="background-color: #FFFFFF; padding: 30px; border-radius: 12px; border: 1px solid #E0E0E0; box-shadow: 2px 4px 10px rgba(0,0,0,0.05); height: 100%;">
-                    <p style="color: gray; font-size: 16px; margin-bottom: 10px; font-weight: bold;">HASIL PREDIKSI SAAT INI</p>
-                    <h1 style="color: {status_color}; margin: 0; font-size: 42px;">{status_text}</h1>
-                    <p style="font-size: 18px; margin-top: 15px; color: #1E1E1E; line-height: 1.5;">{status_desc}</p>
-                    <hr style="border: 0.5px solid #EEEEEE; margin: 25px 0;">
-                    <p style="color: #1E1E1E; font-size: 18px; margin-bottom: 10px; font-weight: bold;">Data Historis Maskapai</p>
-                    <p style="font-size: 17px; color: #2B2B2B; line-height: 1.6; margin:0;">
-                        Kategori profil ini mencakup <b>{persentase_target:.1f}%</b> dari populasi. 
-                        Setara dengan <b>{jumlah_target_sama:,}</b> penumpang dari total keseluruhan {total_semua_data:,} data survei historis.
-                    </p>
-                </div>
+            <div style="background-color: #FFFFFF; padding: 25px; border-radius: 12px; border: 1px solid #E0E0E0; box-shadow: 2px 4px 10px rgba(0,0,0,0.05); height: 100%;">
+                <p style="color: gray; font-size: 14px; margin-bottom: 5px; font-weight: bold;">HASIL PREDIKSI SAAT INI</p>
+                <h1 style="color: {status_color}; margin: 0; font-size: 36px;">{status_text}</h1>
+                <p style="font-size: 16px; margin-top: 10px; color: #1E1E1E;">{status_desc}</p>
+                <hr style="border: 0.5px solid #EEEEEE; margin: 20px 0;">
+                <p style="color: #1E1E1E; font-size: 16px; margin-bottom: 5px; font-weight: bold;">💡 Konteks Data Historis Maskapai</p>
+                <p style="font-size: 15px; color: #2B2B2B; line-height: 1.6; margin:0;">
+                    Kategori profil ini mencakup <b>{persentase_target:.1f}%</b> dari populasi. 
+                    Setara dengan <b>{jumlah_target_sama:,}</b> penumpang dari total keseluruhan {total_semua_data:,} data survei historis.
+                </p>
+            </div>
             """, unsafe_allow_html=True)
 
         # Bagian Kanan: Kotak Putih berisi Grafik Gauge

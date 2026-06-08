@@ -239,7 +239,7 @@ with tab_prediksi:
                 <h1 style="color: {status_color}; margin: 0; font-size: 36px;">{status_text}</h1>
                 <p style="font-size: 16px; margin-top: 10px; color: #1E1E1E;">{status_desc}</p>
                 <hr style="border: 0.5px solid #EEEEEE; margin: 20px 0;">
-                <p style="color: #1E1E1E; font-size: 16px; margin-bottom: 5px; font-weight: bold;">💡 Konteks Data Historis Maskapai</p>
+                <p style="color: #1E1E1E; font-size: 16px; margin-bottom: 5px; font-weight: bold;">Data Historis Maskapai</p>
                 <p style="font-size: 15px; color: #2B2B2B; line-height: 1.6; margin:0;">
                     Kategori profil ini mencakup <b>{persentase_target:.1f}%</b> dari populasi. 
                     Setara dengan <b>{jumlah_target_sama:,}</b> penumpang dari total keseluruhan {total_semua_data:,} data survei historis.

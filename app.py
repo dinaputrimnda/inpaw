@@ -225,11 +225,11 @@ with tab_prediksi:
             with res_col1:
                 if prediction_label == "satisfied":
                     status_color = "#4CAF50"
-                    status_text = "😊 PUAS (Satisfied)"
+                    status_text = "PUAS (Satisfied)"
                     status_desc = "Sistem cerdas kami memprediksi bahwa kombinasi layanan yang diterima oleh penumpang ini menghasilkan status <b>Sangat Puas</b>."
                 else:
                     status_color = "#E53935"
-                    status_text = "😐 NETRAL / TIDAK PUAS"
+                    status_text = "NETRAL / TIDAK PUAS"
                     status_desc = "Sistem cerdas kami memprediksi bahwa kombinasi pelayanan maskapai yang diterima masuk dalam kategori <b>Netral atau Tidak Puas</b>."
 
                 # Memperbesar font di sini (font-size diatur ke 42px untuk judul, 18px untuk deskripsi)
@@ -239,7 +239,7 @@ with tab_prediksi:
                     <h1 style="color: {status_color}; margin: 0; font-size: 42px;">{status_text}</h1>
                     <p style="font-size: 18px; margin-top: 15px; color: #1E1E1E; line-height: 1.5;">{status_desc}</p>
                     <hr style="border: 0.5px solid #EEEEEE; margin: 25px 0;">
-                    <p style="color: #1E1E1E; font-size: 18px; margin-bottom: 10px; font-weight: bold;">💡 Konteks Data Historis Maskapai</p>
+                    <p style="color: #1E1E1E; font-size: 18px; margin-bottom: 10px; font-weight: bold;">Data Historis Maskapai</p>
                     <p style="font-size: 17px; color: #2B2B2B; line-height: 1.6; margin:0;">
                         Kategori profil ini mencakup <b>{persentase_target:.1f}%</b> dari populasi. 
                         Setara dengan <b>{jumlah_target_sama:,}</b> penumpang dari total keseluruhan {total_semua_data:,} data survei historis.

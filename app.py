@@ -279,11 +279,25 @@ with tab_eda:
     st.markdown("Berikut adalah ringkasan visualisasi hubungan antar variabel terhadap tingkat kepuasan penumpang:")
 
     # 1. Distribusi Target Utama
+    # 1. Distribusi Target Utama (Dibuat lebih compact/padat)
     st.markdown("---")
     st.markdown("#### 1. Distribusi Status Kepuasan")
-    fig1, ax1 = plt.subplots(figsize=(5, 3)) # Ukuran lebih kecil agar pas di kolom
-    sns.countplot(x='satisfaction', data=df_raw, palette='Set2', ax=ax1, edgecolor='black')
-    st.pyplot(fig1)
+    
+    # Menggunakan st.container dengan lebar terbatas agar tidak terlalu lebar
+    with st.container():
+        # Ukuran figsize dibuat lebih kecil (lebar: 4, tinggi: 2.5)
+        fig1, ax1 = plt.subplots(figsize=(4, 2.5))
+        
+        sns.countplot(x='satisfaction', data=df_raw, palette='Set2', ax=ax1, edgecolor='black')
+        
+        # Menambah detail agar font tetap terbaca meski grafik kecil
+        ax1.set_title("Proporsi Puas vs Netral/Tidak Puas", fontsize=10, fontweight='bold')
+        ax1.set_xlabel("Status Kepuasan", fontsize=9)
+        ax1.set_ylabel("Jumlah", fontsize=9)
+        ax1.tick_params(axis='both', labelsize=8)
+        
+        # Menampilkan dengan use_container_width=True agar mengikuti lebar kolom
+        st.pyplot(fig1, use_container_width=False)
 
     # 2. Fitur Kategorikal (Gunakan 2 kolom agar rapi)
     st.markdown("---")
